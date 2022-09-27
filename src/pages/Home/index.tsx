@@ -1,8 +1,11 @@
 import './styles.css';
+import { Container } from 'react-bootstrap';
 
 function Home() {
   return (
-    <div>Home</div>
+    <Container>
+      <h1>Teste</h1>
+    </Container>
   )
 }
 
