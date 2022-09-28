@@ -17,3 +17,8 @@ footer a {
     color: inherit;
     transition: all .6;
 }
+
+footer a:hover {
+    color: blueviolet;
+    border-bottom: 2px solid black;
+}

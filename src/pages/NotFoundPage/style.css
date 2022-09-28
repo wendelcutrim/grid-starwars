@@ -1,0 +1,8 @@
+.not-found img {
+    max-height: 62rem;
+    margin-top: 1.6rem;
+    width: 100%;
+}
+.not-found h1 {
+    font-size: 3.6rem;
+}

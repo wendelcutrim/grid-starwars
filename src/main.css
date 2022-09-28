@@ -14,3 +14,13 @@ body {
     font-size: 1.6rem;
     font-family: 'Rajdhani', sans-serif;
 }
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: #FFE81F;
+    border-bottom: 2px solid white;
+}
