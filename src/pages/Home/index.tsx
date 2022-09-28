@@ -1,17 +1,19 @@
 import './styles.css';
 import { Container } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import { TABLE_PEOPLE_HEAD } from '../../constants/TABLE_PEOPLE_HEAD';
 
-import { Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { baseUrl as swapApi } from '../../services/swapApi';
 
 import TableHead from '../../components/TableHead';
 import TableHeadRow from '../../components/TableHeadRow';
 import TableBody from '../../components/TableBody';
 import Loading from '../../components/Loading';
-import ErrorAlert from '../../components/ErrorAlert'
+import ErrorAlert from '../../components/ErrorAlert';
+import DataPeople from '../../components/TableDataPeople/DataPeople';
 
 const data = {
   "count": 82, 
@@ -274,37 +276,79 @@ const data = {
       }
   ]
 }
+interface DataPeopleProps {
+  name: string;
+  height: string;
+  mass: string;
+  hair_color: string;
+  skin_color: string;
+  eye_color: string;
+  birth_year: string;
+  gender: string;
+  homeworld: string;
+  films: string[];
+  vehicles: string[];
+  starships: string[];
+}
 
 function Home() {
+  const [people, setPeople] = useState<DataPeopleProps[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<any>('');
+
+
+  const getPeoples = async () => {
+    setLoading(true);
+    
+    try {
+      const response = await fetch(`${swapApi}/people`);
+      const data = await response.json();
+
+      setPeople(data.results);
+    } catch (err) {
+      setError(true);
+      setErrorMessage(err);
+    }
+
+    setLoading(false);
+   
+  };
+
+  useEffect(() => {
+    getPeoples();
+  }, []);
+
+
   return (
     <Container>
+      {loading && (<Loading />)}
+      {error && (<ErrorAlert text={errorMessage} />)}
        <Table striped bordered hover variant="dark" className="mt-4 mb-4">
         <TableHead>
           {TABLE_PEOPLE_HEAD.EN.title.map((column, index) => (
             <TableHeadRow key={index} title={column} />
           ))}
         </TableHead>
-        
-        <tbody>
-            {data.results.map((item, index) => 
-              (
-                <tr key={index}>
-                  <td><Link to={`/people/${index + 1}`}>{item.name}</Link></td>
-                  <td><Link to={`/people/${index + 1}`}>{item.height}</Link></td>
-                  <td><Link to={`/people/${index + 1}`}>{item.mass}</Link></td>
-                  <td><Link to={`/people/${index + 1}`}>{item.hair_color}</Link></td>
-                  <td><Link to={`/people/${index + 1}`}>{item.skin_color}</Link></td>
-                  <td><Link to={`/people/${index + 1}`}>{item.eye_color}</Link></td>
-                  <td><Link to={`/people/${index + 1}`}>{item.birth_year}</Link></td>
-                  <td><Link to={`/people/${index + 1}`}>{item.gender}</Link></td>
-                  <td><Link to={`/people/${index + 1}`}>{item.homeworld}</Link></td>
-                  <td><Link to={`/people/${index + 1}`}>{item.films.length}</Link></td>
-                  <td><Link to={`/people/${index + 1}`}>{item.vehicles.length}</Link></td>
-                  <td><Link to={`/people/${index + 1}`}>{item.starships.length}</Link></td>
-                </tr>
-              )
-            )}
-        </tbody>
+        <TableBody>
+          {people.map((person, index) => (
+            <DataPeople 
+              key={index}
+              name={person.name}
+              height={person.height}
+              mass={person.mass}
+              hair_color={person.hair_color}
+              skin_color={person.skin_color}
+              eye_color={person.eye_color}
+              birth_year={person.birth_year}
+              gender={person.gender}
+              homeworld={person.homeworld}
+              films={person.films}
+              vehicles={person.vehicles}
+              starships={person.starships}
+            />
+          ))}
+        </TableBody>
     </Table>
     </Container>
   )

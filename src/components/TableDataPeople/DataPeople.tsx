@@ -16,10 +16,8 @@ interface DataPeopleProps {
   gender: string;
   homeworld: string;
   films: string[];
-  species: string[];
   vehicles: string[];
   starships: string[];
-  url: string;
 }
 
 function DataPeople({...rest}: DataPeopleProps, index: number) {
@@ -32,10 +30,10 @@ function DataPeople({...rest}: DataPeopleProps, index: number) {
     setLoading(true);
     
     try {
-      const response = await fetch(`${baseUrl}/people/${rest.homeworld}}`);
+      const response = await fetch(rest.homeworld);
       const data = await response.json();
   
-      setHomeland(data);
+      setHomeland(data.name);
     } catch(err) {
       setError(true);
       setErrorMessage(err);
@@ -50,22 +48,19 @@ function DataPeople({...rest}: DataPeopleProps, index: number) {
 
   return (
     <tr key={index}>
-      {loading && (<Loading />)}
       {error && (<ErrorAlert text={errorMessage} />)}
       <TableData content={rest.name} route={`/people/${index + 1}`}/>
       <TableData content={rest.height} route={`/people/${index + 1}`}/>
+      <TableData content={rest.mass} route={`/people/${index + 1}`}/>
       <TableData content={rest.hair_color} route={`/people/${index + 1}`}/>
       <TableData content={rest.skin_color} route={`/people/${index + 1}`}/>
       <TableData content={rest.eye_color} route={`/people/${index + 1}`}/>
       <TableData content={rest.birth_year} route={`/people/${index + 1}`}/>
       <TableData content={rest.gender} route={`/people/${index + 1}`}/>
-      <TableData content={rest.name} route={`/people/${index + 1}`}/>
-      <TableData content={rest.name} route={`/people/${index + 1}`}/>
-      <TableData content={rest.name} route={`/people/${index + 1}`}/>
-      <TableData content={rest.name} route={`/people/${index + 1}`}/>
-      <TableData content={rest.name} route={`/people/${index + 1}`}/>
-      <TableData content={rest.name} route={`/people/${index + 1}`}/>
-      <TableData content={rest.name} route={`/people/${index + 1}`}/>
+      <TableData content={homeland} route={`/people/${index + 1}`}/>
+      <TableData content={rest.films.length} route={`/people/${index + 1}`}/>
+      <TableData content={rest.vehicles.length} route={`/people/${index + 1}`}/>
+      <TableData content={rest.starships.length} route={`/people/${index + 1}`}/>
     </tr>
   )
 }
