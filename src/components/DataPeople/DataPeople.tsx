@@ -44,7 +44,7 @@ function DataPeople({...rest}: DataPeopleProps, index: number) {
     <tr key={index}>
       {error && (<ErrorAlert text={errorMessage} />)}
       <TableData content={rest.name} route={`/people/${getPersonId(rest.url)}`}/>
-      <TableData content={rest.height} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={rest.height + " cm"} route={`/people/${getPersonId(rest.url)}`}/>
       <TableData content={rest.mass} route={`/people/${getPersonId(rest.url)}`}/>
       <TableData content={rest.hair_color} route={`/people/${getPersonId(rest.url)}`}/>
       <TableData content={rest.skin_color} route={`/people/${getPersonId(rest.url)}`}/>

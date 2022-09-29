@@ -1,5 +1,6 @@
 export interface SelectInputProps {
-    method?: string | number | string[];
+    method: any;
     data: any;
-    disabledInputText: string;
+    labelName: string;
+    option: string | number;
 }
