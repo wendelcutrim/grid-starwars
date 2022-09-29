@@ -1,25 +1,11 @@
 import { baseUrl } from '../../services/swapApi';
 import { useState, useEffect } from 'react';
 
+import { DataPeopleProps } from './types';
+
 import TableData from '../TableData';
 import Loading from '../Loading';
 import ErrorAlert from '../ErrorAlert';
-
-interface DataPeopleProps {
-  name: string;
-  height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
-  gender: string;
-  homeworld: string;
-  films: string[];
-  vehicles: string[];
-  starships: string[];
-  url: string
-}
 
 function DataPeople({...rest}: DataPeopleProps, index: number) {
   const [homeland, setHomeland] = useState<string>('');

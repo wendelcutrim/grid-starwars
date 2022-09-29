@@ -24,3 +24,10 @@ a:hover {
     color: #FFE81F;
     border-bottom: 2px solid white;
 }
+
+.form-select {
+    background-color: #FFE81F;
+    color: black;
+    font-size: 1.6rem;
+    font-weight: bolder;
+}
