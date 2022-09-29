@@ -18,6 +18,7 @@ interface DataPeopleProps {
   films: string[];
   vehicles: string[];
   starships: string[];
+  url: string
 }
 
 function DataPeople({...rest}: DataPeopleProps, index: number) {
@@ -44,23 +45,30 @@ function DataPeople({...rest}: DataPeopleProps, index: number) {
 
   useEffect(() => {
     getHomelandName();
-  }, [rest.homeworld])
+  }, [rest.homeworld]);
+
+  const getPersonId = (url: string) => {
+    const array = url.split('people/');
+    const arraySplited = array.splice(1,1)
+    const personId = arraySplited.shift();
+    return personId;
+  };
 
   return (
     <tr key={index}>
       {error && (<ErrorAlert text={errorMessage} />)}
-      <TableData content={rest.name} route={`/people/${index + 1}`}/>
-      <TableData content={rest.height} route={`/people/${index + 1}`}/>
-      <TableData content={rest.mass} route={`/people/${index + 1}`}/>
-      <TableData content={rest.hair_color} route={`/people/${index + 1}`}/>
-      <TableData content={rest.skin_color} route={`/people/${index + 1}`}/>
-      <TableData content={rest.eye_color} route={`/people/${index + 1}`}/>
-      <TableData content={rest.birth_year} route={`/people/${index + 1}`}/>
-      <TableData content={rest.gender} route={`/people/${index + 1}`}/>
-      <TableData content={homeland} route={`/people/${index + 1}`}/>
-      <TableData content={rest.films.length} route={`/people/${index + 1}`}/>
-      <TableData content={rest.vehicles.length} route={`/people/${index + 1}`}/>
-      <TableData content={rest.starships.length} route={`/people/${index + 1}`}/>
+      <TableData content={rest.name} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={rest.height} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={rest.mass} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={rest.hair_color} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={rest.skin_color} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={rest.eye_color} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={rest.birth_year} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={rest.gender} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={homeland} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={rest.films.length} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={rest.vehicles.length} route={`/people/${getPersonId(rest.url)}`}/>
+      <TableData content={rest.starships.length} route={`/people/${getPersonId(rest.url)}`}/>
     </tr>
   )
 }

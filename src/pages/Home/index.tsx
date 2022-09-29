@@ -289,6 +289,7 @@ interface DataPeopleProps {
   films: string[];
   vehicles: string[];
   starships: string[];
+  url: string;
 }
 
 function Home() {
@@ -296,7 +297,7 @@ function Home() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<any>('');
-
+  const [countPage, setCountPage] = useState<string>('')
 
   const getPeoples = async () => {
     setLoading(true);
@@ -312,7 +313,6 @@ function Home() {
     }
 
     setLoading(false);
-   
   };
 
   useEffect(() => {
@@ -346,6 +346,7 @@ function Home() {
               films={person.films}
               vehicles={person.vehicles}
               starships={person.starships}
+              url={person.url}
             />
           ))}
         </TableBody>
