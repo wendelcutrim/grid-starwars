@@ -6,7 +6,6 @@
 
 :root {
     font-size: 62.5%;
-    --bs-yellow: #FFE81F;
 }
 
 body {
@@ -32,3 +31,5 @@ a:hover {
     font-size: 1.6rem;
     font-weight: bolder;
 }
+
+

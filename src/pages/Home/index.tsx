@@ -51,7 +51,6 @@ function Home() {
     }
 
     setLoading(false);
-    console.log( page, totalPages)
   };
 
   const getAllGenders = async () => {
@@ -142,7 +141,7 @@ function Home() {
         <SelectInput
           event={genders}
           data={genders}
-          labelName="genders"
+          labelName="Genders"
           option={gender}
         />
 
