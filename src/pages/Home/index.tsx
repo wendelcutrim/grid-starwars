@@ -6,7 +6,7 @@ import { DataPeopleProps } from '../../components/DataPeople/types';
 
 import { Container } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Pagination } from 'react-bootstrap';
 
 import TableHead from '../../components/TableHead';
 import TableHeadRow from '../../components/TableHeadRow';
@@ -16,6 +16,7 @@ import ErrorAlert from '../../components/ErrorAlert';
 import DataPeople from '../../components/DataPeople/DataPeople';
 import FormFilters from '../../components/FormFilters';
 import SelectInput from '../../components/SelectInput';
+import PaginationButton from '../../components/PaginationButton';
 
 
 function Home() {
@@ -30,7 +31,10 @@ function Home() {
   const [hairColorArray, setHairColorArray] = useState<string[]>([]);
   const [hairColor, setHairColor] = useState<string>('all');
 
+  const [countData, setCountData] = useState<number>(0);
   const [page, setPage] = useState<number>(1);
+
+  const totalPages = Math.ceil(countData / people.length);
 
   const getPeople = async () => {
     setLoading(true);
@@ -39,6 +43,7 @@ function Home() {
       const response = await fetch(`${swapApi}/people?page=${page}`);
       const data = await response.json();
 
+      setCountData(data.count);
       setPeople(data.results);
     } catch (err) {
       setError(true);
@@ -46,9 +51,10 @@ function Home() {
     }
 
     setLoading(false);
+    console.log( page, totalPages)
   };
 
-  const getAllgenders = async () => {
+  const getAllGenders = async () => {
     setLoading(true);
 
     try {
@@ -104,9 +110,25 @@ function Home() {
     return data;
   };
 
+  const handleNextPage = () => {
+    if(page == 9) {
+      setPage(1)
+    }else {
+      setPage(page + 1)
+    }
+  };
+
+  const handlePrevPage = () => {
+    if(page === 1) {
+      setPage(totalPages)
+    } else {
+      setPage(page - 1)
+    }
+  }
+
   useEffect(() => {
     getPeople();
-    getAllgenders();
+    getAllGenders();
     getAllHairColors();
     getAllBirthYears();
   }, [page, gender, hairColor, birthYear]);
@@ -171,6 +193,11 @@ function Home() {
           })}
         </TableBody>
       </Table>
+      <PaginationButton 
+        content={page}
+        handleButtonNext={handleNextPage} 
+        handleButtonPrev={handlePrevPage}
+      />
     </Container>
   )
 }
