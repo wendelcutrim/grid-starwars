@@ -1,5 +1,5 @@
 export interface SelectInputProps {
-    method: any;
+    event: any;
     data: any;
     labelName: string;
     option: string | number;
