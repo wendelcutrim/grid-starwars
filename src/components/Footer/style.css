@@ -1,0 +1,24 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFE81F;
+    color: black;
+    font-weight: bolder;
+    padding: 2rem;
+}
+
+footer p { 
+    margin: 0
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+    transition: all .6;
+}
+
+footer a:hover {
+    color: blueviolet;
+    border-bottom: 2px solid black;
+}

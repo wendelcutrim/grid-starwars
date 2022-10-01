@@ -1,0 +1,14 @@
+.pagination li a {
+    background-color: #FFE81F;
+    color: black;
+    font-size: 1.6rem;
+    font-weight: bolder;
+    border: 1px solid black;
+    transition: all .6s;
+}
+
+.pagination a:hover, a:hover:active {
+    background-color: #cbb708;
+    color: black;
+    border: 1px solid black;
+}

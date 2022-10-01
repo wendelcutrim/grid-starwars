@@ -1,0 +1,18 @@
+.title-nav {
+    color: white;
+    font-size: 3.6rem;
+    text-transform: uppercase;
+}
+
+nav a {
+    transition: transform .9;
+}
+
+nav a:hover {
+    border-bottom: none;
+    transform: scale(1.2);
+}
+
+nav span {
+    cursor: pointer;
+}
