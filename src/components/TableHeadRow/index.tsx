@@ -1,6 +1,4 @@
-interface TableHeadRowProps {
-  title: string;
-};
+import { TableHeadRowProps } from './types';
 
 function TableHeadRow({title}: TableHeadRowProps) {
   return (

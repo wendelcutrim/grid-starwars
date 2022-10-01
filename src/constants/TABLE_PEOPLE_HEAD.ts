@@ -7,9 +7,9 @@ interface TablePeopleHeadProps {
 export const TABLE_PEOPLE_HEAD: TablePeopleHeadProps = {
     EN: {
         title: [
-            "Name", 
-            "Height", 
-            "Mass", 
+            "Name",
+            "Height",
+            "Mass",
             "Hair Color",
             "Skin Color",
             "Eyes Color",

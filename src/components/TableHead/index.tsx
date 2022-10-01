@@ -1,8 +1,6 @@
-interface TableHeadProps {
-  children?: React.ReactNode
-}
+import { TableHeadProps } from './types';
 
-function TableHead({children}: TableHeadProps) {
+function TableHead({ children }: TableHeadProps) {
   return (
     <thead>
       <tr>

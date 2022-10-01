@@ -1,10 +1,8 @@
-import { baseUrl } from '../../services/swapApi';
 import { useState, useEffect } from 'react';
 
 import { DataPeopleProps } from './types';
 
 import TableData from '../TableData';
-import Loading from '../Loading';
 import ErrorAlert from '../ErrorAlert';
 
 function DataPeople({...rest}: DataPeopleProps, index: number) {

@@ -1,10 +1,6 @@
 import { Form } from 'react-bootstrap';
 
-interface BirthYearFilterProps {
-    birthYearArray: [];
-    handleBirthYear: any;
-    labelName: string;
-}
+import { BirthYearFilterProps } from './types';
 
 function BirthYearFilter(props: BirthYearFilterProps) {
 

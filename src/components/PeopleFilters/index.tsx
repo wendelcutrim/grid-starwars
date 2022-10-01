@@ -3,15 +3,7 @@ import GenderFilter from "./GenderFilter";
 import HairColorFilter from "./HairColorFilter";
 import BirthYearFilter from "./BirthYearFilter";
 
-interface PeopleFiltersProps {
-  genderArray: any;
-  hairColorArray: any;
-  birthYearArray: any;
-
-  eventGender: any;
-  eventHairColor: any;
-  eventBirthYear: any;
-}
+import { PeopleFiltersProps } from './types';
 
 function PeopleFilters(props: PeopleFiltersProps) {
   return (

@@ -1,4 +1,4 @@
-export interface DataPeopleProps {
+export type DataPeopleProps = {
 	name: string;
 	height: string;
 	mass: string;

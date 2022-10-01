@@ -1,10 +1,6 @@
 import { Form } from 'react-bootstrap';
 
-interface HairColorFilterProps {
-    hairColorArray: [];
-    handleHairColor: any;
-    labelName: string;
-}
+import { HairColorFilterProps } from './types';
 
 function HairColorFilter(props: HairColorFilterProps) {
 

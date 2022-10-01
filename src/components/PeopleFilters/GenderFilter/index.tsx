@@ -1,10 +1,6 @@
 import { Form } from 'react-bootstrap';
 
-interface GenderFilterProps {
-    genders: [];
-    handleGender: any;
-    labelName: string;
-}
+import { GenderFilterProps } from './types';
 
 function GenderFilter(props: GenderFilterProps) {
 
