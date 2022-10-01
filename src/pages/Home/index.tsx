@@ -4,9 +4,8 @@ import { TABLE_PEOPLE_HEAD } from '../../constants/TABLE_PEOPLE_HEAD';
 import { baseUrl as swapApi } from '../../services/swapApi';
 import { DataPeopleProps } from '../../components/DataPeople/types';
 
-import { Container } from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-import { Table, Pagination } from 'react-bootstrap';
 
 import TableHead from '../../components/TableHead';
 import TableHeadRow from '../../components/TableHeadRow';
@@ -17,6 +16,7 @@ import DataPeople from '../../components/DataPeople/DataPeople';
 import FormFilters from '../../components/FormFilters';
 import SelectInput from '../../components/SelectInput';
 import PaginationButton from '../../components/PaginationButton';
+import PeopleFilters from '../../components/PeopleFilters';
 
 
 function Home() {
@@ -131,34 +131,26 @@ function Home() {
     getAllHairColors();
     getAllBirthYears();
   }, [page, gender, hairColor, birthYear]);
+  /* console.log(page, gender, hairColor, birthYear); */
+
 
 
   return (
+    <div>
     <Container>
       {loading && (<Loading />)}
       {error && (<ErrorAlert text={errorMessage} />)}
-      <FormFilters>
-        <SelectInput
-          event={genders}
-          data={genders}
-          labelName="Genders"
-          option={gender}
+
+        <PeopleFilters 
+          genderArray={genders}
+          hairColorArray={hairColorArray}
+          birthYearArray={birthYearArray}
+        
+          eventGender={setGender}
+          eventHairColor={setHairColor}
+          eventBirthYear={setBirthYear}
         />
 
-        <SelectInput
-          event={hairColorArray}
-          data={hairColorArray}
-          labelName="Hair Color"
-          option={hairColor}
-        />
-
-        <SelectInput
-          event={birthYearArray}
-          data={birthYearArray}
-          labelName="Birth Years"
-          option={birthYear}
-        />
-      </FormFilters>
 
       <Table striped bordered hover variant="dark" className="mt-4 mb-4">
         <TableHead>
@@ -188,7 +180,133 @@ function Home() {
                   url={person.url}
                 />
               )
-            }
+            } else if(gender === 'all' && hairColor !== 'all' && birthYear === 'all') {
+              if(person.hair_color === hairColor) {
+                return (
+                  <DataPeople
+                    key={index}
+                    name={person.name}
+                    height={person.height}
+                    mass={person.mass}
+                    hair_color={person.hair_color}
+                    skin_color={person.skin_color}
+                    eye_color={person.eye_color}
+                    birth_year={person.birth_year}
+                    gender={person.gender}
+                    homeworld={person.homeworld}
+                    films={person.films}
+                    vehicles={person.vehicles}
+                    starships={person.starships}
+                    url={person.url}
+                  />
+                )
+              }
+            } else if(gender === 'all' && hairColor === 'all' && birthYear !== 'all') {
+              if(person.birth_year === birthYear) {
+                return (
+                  <DataPeople
+                    key={index}
+                    name={person.name}
+                    height={person.height}
+                    mass={person.mass}
+                    hair_color={person.hair_color}
+                    skin_color={person.skin_color}
+                    eye_color={person.eye_color}
+                    birth_year={person.birth_year}
+                    gender={person.gender}
+                    homeworld={person.homeworld}
+                    films={person.films}
+                    vehicles={person.vehicles}
+                    starships={person.starships}
+                    url={person.url}
+                  />
+                )
+              }
+            } else if(gender === 'all' && hairColor !== 'all' && birthYear !== 'all') {
+              if(person.hair_color === hairColor && person.birth_year === birthYear) {
+                return (
+                  <DataPeople
+                    key={index}
+                    name={person.name}
+                    height={person.height}
+                    mass={person.mass}
+                    hair_color={person.hair_color}
+                    skin_color={person.skin_color}
+                    eye_color={person.eye_color}
+                    birth_year={person.birth_year}
+                    gender={person.gender}
+                    homeworld={person.homeworld}
+                    films={person.films}
+                    vehicles={person.vehicles}
+                    starships={person.starships}
+                    url={person.url}
+                  />
+                )
+              }
+            } else if(gender !== 'all' && hairColor === 'all' && birthYear === 'all') {
+              if(person.gender === gender) {
+                return (
+                  <DataPeople
+                    key={index}
+                    name={person.name}
+                    height={person.height}
+                    mass={person.mass}
+                    hair_color={person.hair_color}
+                    skin_color={person.skin_color}
+                    eye_color={person.eye_color}
+                    birth_year={person.birth_year}
+                    gender={person.gender}
+                    homeworld={person.homeworld}
+                    films={person.films}
+                    vehicles={person.vehicles}
+                    starships={person.starships}
+                    url={person.url}
+                  />
+                )
+              }
+            } else if(gender !== 'all' && hairColor !== 'all' && birthYear === 'all') {
+              if(person.gender === gender && person.hair_color === hairColor) {
+                return (
+                  <DataPeople
+                    key={index}
+                    name={person.name}
+                    height={person.height}
+                    mass={person.mass}
+                    hair_color={person.hair_color}
+                    skin_color={person.skin_color}
+                    eye_color={person.eye_color}
+                    birth_year={person.birth_year}
+                    gender={person.gender}
+                    homeworld={person.homeworld}
+                    films={person.films}
+                    vehicles={person.vehicles}
+                    starships={person.starships}
+                    url={person.url}
+                  />
+                )
+              }
+            } else if(gender !== 'all' && hairColor === 'all' && birthYear !== 'all') {
+              if(person.gender === gender && person.birth_year === birthYear) {
+                return (
+                  <DataPeople
+                    key={index}
+                    name={person.name}
+                    height={person.height}
+                    mass={person.mass}
+                    hair_color={person.hair_color}
+                    skin_color={person.skin_color}
+                    eye_color={person.eye_color}
+                    birth_year={person.birth_year}
+                    gender={person.gender}
+                    homeworld={person.homeworld}
+                    films={person.films}
+                    vehicles={person.vehicles}
+                    starships={person.starships}
+                    url={person.url}
+                  />
+                )
+              }
+            } 
           })}
         </TableBody>
       </Table>
@@ -198,6 +316,7 @@ function Home() {
         handleButtonPrev={handlePrevPage}
       />
     </Container>
+    </div>
   )
 }
 
