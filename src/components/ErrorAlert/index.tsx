@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
 
-interface ErrorAlertProps {
-    text: string;
-}
+import { ErrorAlertProps } from './types';
 
 function ErrorAlert({text}: ErrorAlertProps) {
 

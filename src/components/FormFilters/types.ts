@@ -1,3 +1,3 @@
-export interface FormFiltersProps {
+export type FormFiltersProps = {
     children?: React.ReactNode;
 };

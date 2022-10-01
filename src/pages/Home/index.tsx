@@ -2,7 +2,6 @@ import './styles.css';
 
 import { TABLE_PEOPLE_HEAD } from '../../constants/TABLE_PEOPLE_HEAD';
 import { baseUrl as swapApi } from '../../services/swapApi';
-import { DataPeopleProps } from '../../components/DataPeople/types';
 
 import { Container, Table } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
@@ -16,6 +15,21 @@ import DataPeople from '../../components/DataPeople/DataPeople';
 import PaginationButton from '../../components/PaginationButton';
 import PeopleFilters from '../../components/PeopleFilters';
 
+interface DataPeopleProps {
+	name: string;
+	height: string;
+	mass: string;
+	hair_color: string;
+	skin_color: string;
+	eye_color: string;
+	birth_year: string;
+	gender: string;
+	homeworld: string;
+	films: string[];
+	vehicles: string[];
+	starships: string[];
+	url: string;
+}
 
 function Home() {
   const [people, setPeople] = useState<DataPeopleProps[]>([]);
@@ -130,7 +144,6 @@ function Home() {
     getAllHairColors();
     getAllBirthYears();
   }, [page, gender, hairColor, birthYear]);
-  /* console.log(page, gender, hairColor, birthYear); */
 
   return (
     <div>
@@ -309,8 +322,10 @@ function Home() {
         </Table>
         <PaginationButton
           content={page}
+          firstPage={() => setPage(1)}
           handleButtonNext={handleNextPage}
           handleButtonPrev={handlePrevPage}
+          finalPage={() => setPage(totalPages)}
         />
       </Container>
     </div>

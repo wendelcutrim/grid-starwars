@@ -1,20 +1,18 @@
-import Pagination from 'react-bootstrap/Pagination';
-
 import './style.css';
 
-interface PaginationButtonProps {
-  content: string | number;
-  handleButtonPrev?: any;
-  handleButtonNext?: any
-}
+import { PaginationButtonProps } from './types';
+
+import Pagination from 'react-bootstrap/Pagination';
 
 function PaginationButton(props: PaginationButtonProps) {
   return (
     <div className='pagination-custom d-flex justify-content-center align-items-center'>
       <Pagination size='lg' className='dark'>
-        <Pagination.Prev onClick={props.handleButtonPrev}/> 
+        <Pagination.First onClick={props.firstPage} />
+        <Pagination.Prev onClick={props.handleButtonPrev} />
         <Pagination.Item>{props.content}</Pagination.Item>
-        <Pagination.Next onClick={props.handleButtonNext}/>
+        <Pagination.Next onClick={props.handleButtonNext} />
+        <Pagination.Last onClick={props.finalPage}/>
       </Pagination>
     </div>
   )

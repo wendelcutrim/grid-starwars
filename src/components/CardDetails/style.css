@@ -1,4 +1,3 @@
-
 .card a {
     text-decoration: none;
     color: #FFE81F;
@@ -15,6 +14,11 @@
 }
 
 .card-text { 
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     text-align: center;
+}
+
+.card .text-muted {
+    color: #FFE81F!important;
+    margin: .9rem auto;
 }
