@@ -50,7 +50,7 @@ In this project, I chose to select a color palette that resembles the star wars 
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Pages Background | ![#262626](https://via.placeholder.com/10/262626?text=+) #262626 |
+| Background Page Color| ![#262626](https://via.placeholder.com/10/262626?text=+) #262626 |
 | Primary Color | ![#FFE81F](https://via.placeholder.com/10/FFE81F?text=+) #FFE81F |
 | Header and secundary text colors | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
 | Primary text colors | ![#FFFFFF](https://via.placeholder.com/10/FFFFFF?text=+) #FFFFFF |
@@ -61,6 +61,7 @@ In this project, I chose to select a color palette that resembles the star wars 
 - Pagination
 - Individual presentation of each character
 - Loading effect
+- Error Pege
 
 ## Author
 
@@ -79,4 +80,8 @@ Loading effect
 
 Individual page
 ![Individual Page](./src/assets/img/readme/individual-page-grid-starwars.png)
+
+Error page
+![Individual Page](./src/assets/img/readme/error-page-grid-starwars.png)
+
 
