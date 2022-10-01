@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom';
 
-interface TableDataProps {
-    content: any;
-    route: string;
-}
+import { TableDataProps } from './types';
 
 function TableData({ content, route }: TableDataProps) {
   return (

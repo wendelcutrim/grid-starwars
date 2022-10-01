@@ -1,8 +1,4 @@
-import React from "react"
-
-interface TableBodyProps {
-    children: React.ReactNode;
-}
+import { TableBodyProps } from './types';
 
 function TableBody({ children }: TableBodyProps) {
   return (
