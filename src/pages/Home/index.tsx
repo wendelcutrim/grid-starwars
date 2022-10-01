@@ -13,8 +13,6 @@ import TableBody from '../../components/TableBody';
 import Loading from '../../components/Loading';
 import ErrorAlert from '../../components/ErrorAlert';
 import DataPeople from '../../components/DataPeople/DataPeople';
-import FormFilters from '../../components/FormFilters';
-import SelectInput from '../../components/SelectInput';
 import PaginationButton from '../../components/PaginationButton';
 import PeopleFilters from '../../components/PeopleFilters';
 
@@ -35,7 +33,6 @@ function Home() {
   const [page, setPage] = useState<number>(1);
 
   const totalPages = Math.ceil(countData / people.length);
-
   const getPeople = async () => {
     setLoading(true);
 
@@ -132,8 +129,6 @@ function Home() {
     getAllBirthYears();
   }, [page, gender, hairColor, birthYear]);
   /* console.log(page, gender, hairColor, birthYear); */
-
-
 
   return (
     <div>
